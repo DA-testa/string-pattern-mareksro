@@ -13,9 +13,9 @@ def read_input():
     
     if "F" in tips:
         fails = "./test/06"
-    with open(fails, mode="r") as f:
-        pattern = f.readline().rstrip()
-        text = f.readline().rstrip()
+        with open(fails, mode="r") as f:
+            pattern = f.readline().rstrip()
+            text = f.readline().rstrip()
     # after input type choice
     # read two lines 
     # first line is pattern 
