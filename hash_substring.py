@@ -12,7 +12,7 @@ def read_input():
         text = input().rstrip()
     
     if "F" in tips:
-        fails = "./test/06"
+        fails = "./tests/06"
         with open(fails, mode="r") as f:
             pattern = f.readline().rstrip()
             text = f.readline().rstrip()
@@ -37,15 +37,18 @@ def get_occurrences(pattern, text):
     textlength=len(text)
     patternlength=len(pattern)
     patternhash=get_hash(pattern)
-    texthash = get_hash(text[:len(pattern)])
-    multiplier = 1
+    texthash = get_hash(text[:patternlength])
+    multi = 1
+    
+    for i in range(1, patternlength):
+        multi = (multi * B) % Q
 
     for i in range(textlength - patternlength + 1):
         if patternhash == texthash:
-            if pattern == text[i:i+patternlength]:
+            if pattern == text[i:(i+patternlength)]:
                 occur.append(i)
         if i < textlength - patternlength:
-            texthash=(B* (texthash - ord(text[i]) * multiplier) + ord(text[i + patternlength])) % Q
+            texthash=(B* (texthash - ord(text[i]) * multi) + ord(text[i + patternlength])) % Q
 
 
     # and return an iterable variable
