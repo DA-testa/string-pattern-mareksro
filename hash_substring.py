@@ -7,11 +7,11 @@ def read_input():
     # as before, use capital i (input from keyboard) and capital f (input from file) to choose which input type will follow
     tips = input()
     
-    if "I" in input:
+    if "I" in tips:
         pattern = input().rstrip()
         text = input().rstrip()
     
-    if "F" in input:
+    if "F" in tips:
         fails = "./test/06"
     with open(fails, "r") as f:
         pattern = f.readline().rstrip()
